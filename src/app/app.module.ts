@@ -8,13 +8,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarouselComponent } from './carousel/carousel.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarouselComponent,
     HomePageComponent,
-    TopBarComponent
+    TopBarComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
