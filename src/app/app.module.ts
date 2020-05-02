@@ -9,8 +9,10 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { CartComponent } from './cart/cart.component';
-
-@NgModule({
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+ @NgModule({
   declarations: [
     AppComponent,
     CarouselComponent,
@@ -22,7 +24,11 @@ import { CartComponent } from './cart/cart.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    MatFormFieldModule,
+    MatInputModule, 
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
