@@ -1,0 +1,58 @@
+
+  /* new stuff*/
+  .label {
+    color: white;
+    padding: 3px;
+    font-family: Arial;
+    border-radius:3px;
+    margin-right: 6px;
+  }
+.success {background-color: #4CAF50;} /* Green */
+
+
+mat-form-field#chambres{
+    margin-right: 30px;
+}
+button#reset{
+    float: right;
+}
+mat-form-field.full{
+width: 100%;
+}
+
+div.full-width{
+    width: 100%;
+}
+
+mat-form-field.half {
+width: 50%;
+}
+
+
+mat-form-field.third {
+width: 33.3333333%;
+}
+
+mat-form-field.two-thirds {
+    width: 66.666666%;
+}
+
+
+mat-button-toggle-group {
+    margin-left: 20px;
+}
+
+
+div.results{
+    margin-top: 1cm;
+
+}
+
+
+div.homeSearch{
+    background-color: rgb(238, 238, 238)
+}
+
+#uptag{
+    margin-left: 3px;
+}
