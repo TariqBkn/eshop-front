@@ -1,0 +1,120 @@
+<mat-toolbar color="primary">
+    <span>Créer un Compte: </span>
+</mat-toolbar>
+<br>
+<div class="container">
+<mat-card-content>
+
+
+
+    <form  class="form" [formGroup]="registrationForm" (ngSubmit)="onClickSubmit()"  >
+
+        <div class="form-group">   
+            <mat-form-field class="full-width" appearance="outline" class="full">
+            <mat-label> Prénom </mat-label>
+            <input [class.is-invalid]="isFieldValid('firstname')" type="text" matInput formControlName="firstname" >
+            <mat-hint class="text-danger" *ngIf="isFieldValid('firstname')">Prénom n'est pas renseigné.</mat-hint>
+            </mat-form-field>
+            
+        </div>
+
+        <div class="form-group">
+            <mat-form-field class="full-width" appearance="outline" class="full">
+            <mat-label>Nom</mat-label>
+            <input 
+            [class.is-invalid]="isFieldValid('lastname')"
+            type="text" matInput formControlName="lastname" >
+            <mat-hint class="text-danger" *ngIf="isFieldValid('lastname')">Nom n'est pas renseigné.</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group"> 
+            <mat-form-field class="full-width" appearance="outline" class="full">
+                <mat-label>Ville</mat-label>
+                <input type="text"  matInput formControlName="city" 
+                [class.is-invalid]="isFieldValid('city')" 
+                >
+                <mat-hint class="text-danger" *ngIf="isFieldValid('city')">Ville n'est pas renseigné.</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group"> 
+            <mat-form-field class="full-width" appearance="outline" class="full">
+                <mat-label>Rue</mat-label>
+                <input type="text"  matInput formControlName="streetname" 
+                [class.is-invalid]="isFieldValid('streetname')" 
+                >
+                <mat-hint class="text-danger" *ngIf="isFieldValid('city')">Rue n'est pas renseignée.</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group"> 
+            <mat-form-field class="full-width" appearance="outline" class="full">
+                <mat-label>Numéro</mat-label>
+                <input type="text"  matInput formControlName="number" 
+                [class.is-invalid]="isFieldValid('number')" 
+                >
+                <mat-hint class="text-danger" *ngIf="isFieldValid('number')">Numéro n'est pas renseigné.</mat-hint>
+            </mat-form-field>
+        </div>
+
+        <div class="form-group">
+           <mat-form-field class="full-width" appearance="outline" class="full">
+           <mat-label>Email</mat-label>
+           <input [class.is-invalid]="isFieldValid('email')"  matInput formControlName="email" placeholder="user@example.com">
+           <mat-hint class="text-danger" *ngIf="registrationForm.get('email').errors?.required && registrationForm.get('email').touched ">
+            Email n'est pas renseigné.</mat-hint>
+            <mat-hint class="text-danger" *ngIf="
+             registrationForm.get('email').errors?.email && 
+             registrationForm.get('email').touched" >Veuillez entrez un email valide.</mat-hint>
+            </mat-form-field>
+           
+         </div>
+       
+        <div class="form-group">
+           <mat-form-field class="full-width" appearance="outline" class="full">
+           <mat-label>Mot-de-passe</mat-label>
+           <input  type="password" matInput placeholder="Tapez votre mot de passe"  formControlName="password">
+           <mat-hint class="text-danger" *ngIf="registrationForm.get('password').errors?.required
+           && registrationForm.get('password').touched">Mot-de-passe n'est pas renseigné.</mat-hint>
+        </mat-form-field>
+          
+           
+        </div>
+
+
+        <div class="form-group">
+            <mat-form-field class="full-width" appearance="outline" class="full">
+            <mat-label>Retapez le mot-de-passe</mat-label>
+            <input [class.is-invalid]="registrationForm.errors?.misMatch" type="password" formControlName="confirmPassword"  matInput placeholder="Confirmez votre mot-de-passe" >
+            <mat-hint><span class="text-danger" *ngIf="registrationForm.errors?.misMatch">Les deux mot-de-passe ne sont pas conformes.</span>
+            <br><span class="text-danger" *ngIf="registrationForm.get('confirmPassword').errors?.required
+            && registrationForm.get('confirmPassword').touched">Veuillez confirmez votre mot-de-passe.</span>
+            </mat-hint>
+         </mat-form-field>
+            
+        </div>
+    
+        <div class="d-flex">
+            <div>
+                <button style="width: 150px; height:50px;" mat-raised-button type="submit" color="primary" 
+                [disabled]="registrationForm.invalid || showSpinner" 
+                class="btn-lg"
+                >
+                    <span *ngIf="showSpinner">Traitement...</span>
+                    <span *ngIf="!showSpinner">Créer un Compte</span>
+                </button>
+            </div>
+            <div *ngIf="showSpinner"><mat-spinner diameter="50" color="primary"></mat-spinner></div>
+        </div>
+    </form>
+    
+  </mat-card-content>
+
+<br>
+      
+</div>
+<br>
+<mat-toolbar>
+</mat-toolbar>
+
