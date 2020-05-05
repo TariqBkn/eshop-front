@@ -8,11 +8,17 @@ import { LoginComponent } from '../login/login.component';
 import { Router} from '@angular/router';
 import { AuthenticationService } from '../Services/Authentication/authentication-service.service';
 import { JsonPipe } from '@angular/common';
+import { Address } from '../Models/Address';
+
+
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
   styleUrls: ['./create-account.component.css']
 })
+
+
+
 export class CreateAccountComponent implements OnInit {
 
    showSpinner: boolean=false;
@@ -47,7 +53,7 @@ export class CreateAccountComponent implements OnInit {
 
   register(utilisateur){
     this.showSpinner=true;
-    this.usersService.onSubmit(utilisateur).subscribe(
+    this.usersService.signup(utilisateur).subscribe(
         response => {
             this.showSpinner=false;
             this.status=JSON.stringify(response.status);
@@ -93,19 +99,16 @@ export class CreateAccountComponent implements OnInit {
   }
 }
 
-    onClickSubmit(){
-      const newUser = {
-        
+    onClickSubmit(){  
+     
+     const newUser:User = {
+        address: new Address(this.registrationForm.get('city').value, this.registrationForm.get('streetname').value, this.registrationForm.get('number').value),
         firstName : this.registrationForm.get('firstname').value,
         lastName : this.registrationForm.get('lastname').value,
-        city : this.registrationForm.get('city').value,
-        streetName : this.registrationForm.get('streetname').value,
-        number : this.registrationForm.get('number').value,
         email : this.registrationForm.get('email').value,
         password : this.registrationForm.get('password').value,
-        regisrationDate : Date.now(),
         accountNonLocked :true,
-        roles:['USER'],
+        role:'USER'
       }
       this.register(newUser);
     }

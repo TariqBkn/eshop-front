@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpClient, HttpHeaders } from '@angular/common/http';
-import { AuthenticationService } from '../Authentication/authentication-service.service'
+import { AuthenticationService, User } from '../Authentication/authentication-service.service'
 import { environment } from '../../../environments/environment'
 @Injectable({
   providedIn: 'root'
@@ -25,8 +25,8 @@ export class UsersService {
 
 
 
-  onSubmit(user: any) {
-    return this.http.get<any>(environment.main_api_url+"/users/", this.httpOptions);
+  signup(user: User) {
+    return this.http.post<any>(environment.main_api_url+"/users/signUp", user);
   }
 
 }

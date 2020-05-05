@@ -1,20 +1,14 @@
 export class Address{
-    private id :number;
-    private city:string;
+     private city:string;
     private streetName:string;
     private number:number;
 
-    constructor(id, city, streetName, number){
-        this.id=id;
-        this.city=city;
+    constructor( city, streetName, number){
+         this.city=city;
         this.streetName=streetName;
         this.number=number;
     }
-
-    getId():number{
-        return this.id;  
-    }
-    
+ 
     getCity():string{
     return this.city;  
     }
