@@ -48,7 +48,7 @@ export class AuthenticationService {
   authenticate(username, password) {
   
 
-  return this.httpClient.post<UserData>(this.backendBaseUrl+'/login',{username,password}).pipe(
+  return this.httpClient.post<UserData>(this.backendBaseUrl+'/users/login',{username,password}).pipe(
     map(
       userData => {
 
@@ -59,7 +59,7 @@ export class AuthenticationService {
       
       sessionStorage.setItem('username',username);
       let role :string="";
-      sessionStorage.setItem('roles',role);
+      sessionStorage.setItem('role',role);
       sessionStorage.setItem('UserData',JSON.stringify(userData))
       this.updateUserData(userData);
       return userData;
