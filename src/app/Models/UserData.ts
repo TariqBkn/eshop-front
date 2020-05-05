@@ -5,5 +5,5 @@ export class UserData{
     token: string
     email: string
     accountNonLocked: boolean
-    roles: string
+    role: string
 }
