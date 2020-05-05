@@ -9,7 +9,7 @@ import { Router} from '@angular/router';
 import { AuthenticationService } from '../Services/Authentication/authentication-service.service';
 import { JsonPipe } from '@angular/common';
 import { Address } from '../Models/Address';
-
+import { NotificationService} from '../Services/Notifications/notifications.service'
 
 @Component({
   selector: 'app-create-account',
@@ -32,7 +32,8 @@ export class CreateAccountComponent implements OnInit {
     private authenticationService:AuthenticationService,
     private router:Router,
     private usersService : UsersService, 
-    private formbuilder : FormBuilder) {  }
+    private formbuilder : FormBuilder,
+    private notificationService: NotificationService) {  }
     public status;
     public msg;
     public items;
@@ -59,45 +60,28 @@ export class CreateAccountComponent implements OnInit {
             this.status=JSON.stringify(response.status);
             this.msg=JSON.stringify(response.message);
             this.items=response.items;
-            this.openSnackBar('X');
-            if(response.message=="account_created"){
+            if(response.status==201){
             this.authenticationService.authenticate(this.registrationForm.get('email').value, this.registrationForm.get('password').value).subscribe(
               data => {
-               /* this._snackBar.open('Connecté', 'X', {
-                  duration: 6000,
-                }); */
-                this.router.navigate(['profilePic']);
+                this.notificationService.success("Connecté")
+                this.router.navigate(['']);
                },
               error => {
-                // this._snackBar.open('Email ou mot-de-passe invalide', 'X', {
-                //   duration: 6000,
-                // });
+                this.notificationService.success("Impossible de se connecter")
               }
             )
             }
-            this.router.navigate(['signup']);
+            if(response.status==409){
+              this.notificationService.success("Cet email est utilisé par un autre compte")
+            }
+            this.router.navigate(['signUp']);
         },
         err=>{
           this.showSpinner=false;
           console.log(JSON.stringify(err))
         })
     }
-
-  openSnackBar( action: string) {
-    let message;
-    if(this.msg==='"account_created"') {
-      message="Votre Compte a été Crée";
-    }
-    else if (this.msg==='"invalid_email"') {message = message="Cet Email est déjà Utilisé"}
-    else{
-    //   this._snackBar.open(this.msg, action, {
-    //     duration: 4000,
-    //   });}
-    // this._snackBar.open(message, action, {
-    //   duration: 4000,
-    // });
-  }
-}
+ 
 
     onClickSubmit(){  
      
