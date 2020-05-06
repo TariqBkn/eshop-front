@@ -103,4 +103,7 @@ isUserLoggedIn() {
      sessionStorage.clear();
   }
 
+  getToken(): string{
+    return sessionStorage.getItem("token")
+  }
 }
