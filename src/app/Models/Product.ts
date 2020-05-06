@@ -1,10 +1,10 @@
 export class Product {
     id:number;
-    name:string;
+    title:string;
     description:string;
     unitPrice:number;
     colors:[];
-    images: [];
+    images: [""];
     providerName:string;
     note:number;
 }
