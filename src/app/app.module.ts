@@ -23,8 +23,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { LoginComponent } from './login/login.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar' 
-import {MatButtonModule} from '@angular/material/button' 
-@NgModule({
+import {MatButtonModule} from '@angular/material/button';
+import { LogoutModuleComponent } from './logout-module/logout-module.component';
+ @NgModule({
   declarations: [
     AppComponent,
     CarouselComponent,
@@ -34,8 +35,9 @@ import {MatButtonModule} from '@angular/material/button'
     ProductComponent,
     ProductDetailsComponent,
     CreateAccountComponent,
-    LoginComponent
-  ],
+    LoginComponent,
+    LogoutModuleComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
