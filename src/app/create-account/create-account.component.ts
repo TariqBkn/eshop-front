@@ -33,10 +33,7 @@ export class CreateAccountComponent implements OnInit {
     private router:Router,
     private usersService : UsersService, 
     private formbuilder : FormBuilder,
-    private notificationService: NotificationService) {  }
-    public status;
-    public msg;
-    public items;
+    private notificationService: NotificationService) {  } 
     public emailCreated:boolean=null;
 
  registrationForm = this.formbuilder.group({
@@ -56,30 +53,32 @@ export class CreateAccountComponent implements OnInit {
     this.showSpinner=true;
     this.usersService.signup(utilisateur).subscribe(
         response => {
-            this.showSpinner=false;
-            this.status=JSON.stringify(response.status);
-            this.msg=JSON.stringify(response.message);
-            this.items=response.items;
+            this.showSpinner=false; 
             if(response.status==201){
             this.authenticationService.authenticate(this.registrationForm.get('email').value, this.registrationForm.get('password').value).subscribe(
               data => {
                 this.notificationService.success("Connecté")
                 this.router.navigate(['']);
                },
-              error => {
-                this.notificationService.success("Impossible de se connecter")
+              error => { 
+                  this.notificationService.warn("Compte crée, Impossible de se connecter!")
+                  console.log(error) 
               }
             )
             }
-            if(response.status==409){
-              this.notificationService.success("Cet email est utilisé par un autre compte")
-            }
-            this.router.navigate(['signUp']);
         },
-        err=>{
+        error=>{
+          alert(error.status)
           this.showSpinner=false;
-          console.log(JSON.stringify(err))
-        })
+            if(error.status==409){
+              this.notificationService.success("Cet email est utilisé par un autre compte")
+            }else if(error.status==201){
+                this.notificationService.success("Connecté")
+                this.router.navigate(['']);
+            }else{
+                this.notificationService.warn("Impossible de se connecter")
+            }
+        });
     }
  
 
