@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../Models/Product'
+import { NgxSpinnerService } from 'ngx-spinner';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -7,9 +8,15 @@ import { Product } from '../Models/Product'
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor() { }
   @Input('immobilier') product : Product;
-  ngOnInit(): void {
+  
+  constructor(private spinner: NgxSpinnerService){
+    this.spinner.show();
+   }
+
+  ngOnInit() {
+    
+    this.spinner.hide();
   }
 
 }
