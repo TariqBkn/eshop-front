@@ -51,9 +51,9 @@ export class AuthenticationService {
   return this.httpClient.post<UserData>(this.backendBaseUrl+'/users/login',{username,password}).pipe(
     map(
       userData => {
-
-      if(!userData.accountNonLocked){
+       if(!userData.accountNonLocked){
         this.logOut();
+        //TODO: tell user their account is locked
         return userData;
       }
       
@@ -93,8 +93,8 @@ isUserLoggedIn() {
 }
 
   isCurrentUserAdmin(){
-    if(sessionStorage.getItem('roles')==null){ console.log('roles null'); return false;}
-    return sessionStorage.getItem('roles').includes('ADMIN');
+    if(sessionStorage.getItem('role')==null){ console.log('role null'); return false;}
+    return sessionStorage.getItem('role')=="ADMIN";
 
   }
 
