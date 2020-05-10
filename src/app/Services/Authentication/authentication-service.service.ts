@@ -46,56 +46,46 @@ export class AuthenticationService {
   }
 
   authenticate(username, password) {
-  
-
-  return this.httpClient.post<UserData>(this.backendBaseUrl+'/users/login',{username,password}).pipe(
-    map(
-      userData => {
-       if(!userData.accountNonLocked){
-        this.logOut();
-        //TODO: tell user their account is locked
+    return this.httpClient.post<UserData>(this.backendBaseUrl+'/users/login',{username,password}).pipe(
+      map(
+        userData => {
+        if(!userData.accountNonLocked){
+          this.logOut();
+          //TODO: tell user their account is locked
+          return userData;
+        }
+        sessionStorage.setItem('token',userData.token)
+        sessionStorage.setItem('username',username);
+        sessionStorage.setItem('role',userData.role);
+        sessionStorage.setItem('UserData',JSON.stringify(userData))
+        this.updateUserData(userData);
         return userData;
-      }
-      
-      sessionStorage.setItem('username',username);
-      let role :string="";
-      sessionStorage.setItem('role',role);
-      sessionStorage.setItem('UserData',JSON.stringify(userData))
-      this.updateUserData(userData);
-      return userData;
-      }
-    )
-  );
+        }
+      )
+    );
 }
  
 isUserLoggedIn() {    
     let user = sessionStorage.getItem('username');
     let token = sessionStorage.getItem('token');
 
-    if(token){
-      var decodedToken:any = this.jwtHelperService.decodeToken(token);
-      // console.log('A1')
-      if( decodedToken.exp === undefined){
-          if(this.router.url !== '/login'){
-          this.router.navigate(['login']);
-        }
-        console.log('jwt expired')
-        /// console.log('A2')
-        return false;
-      }
-        if(this.jwtHelperService.isTokenExpired(decodedToken)){
+    if(token && user){
+       var decodedToken:any = this.jwtHelperService.decodeToken(token); 
+       if(this.jwtHelperService.isTokenExpired(token)){
         return false;
       }else{
-            return true;
+        return true;
       }
     }
-    return !(user===null);
+    console.log(token+user)
+    return false;
 }
 
   isCurrentUserAdmin(){
-    if(sessionStorage.getItem('role')==null){ console.log('role null'); return false;}
+    if(sessionStorage.getItem('role')==null){
+       console.log('role null'); return false;
+    }
     return sessionStorage.getItem('role')=="ADMIN";
-
   }
 
   logOut() {
@@ -104,6 +94,11 @@ isUserLoggedIn() {
   }
 
   getToken(): string{
-    return sessionStorage.getItem("token")
-  }
+    if(this.isUserLoggedIn()){
+       return sessionStorage.getItem('token')
+    }
+    this.notificationService.warn("Vous êtes déconnecté")
+    this.logOut()
+    return null;
+   }
 }
