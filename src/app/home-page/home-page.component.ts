@@ -10,10 +10,13 @@ import { ProductsService } from '../Services/products/products.service';
 export class HomePageComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private productsService: ProductsService) { }
+  
   form = this.formBuilder.group({
     searchKeyWord:[]
   })
+
   products
+
   ngOnInit(): void {
     this.productsService.getProducts().subscribe(
       resp => {
