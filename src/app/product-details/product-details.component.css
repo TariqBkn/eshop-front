@@ -1,0 +1,7 @@
+@media (max-width: 1000px) {
+   img {
+       display: none;
+       width:auto;
+       height: auto;
+   } 
+ }
