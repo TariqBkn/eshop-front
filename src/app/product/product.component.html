@@ -1,21 +1,26 @@
 <div>
     <div class="add-to-wishlist">
-        +
+        <button mat-button>+</button>
+    </div>
+    <div (click)="goToDetails()">
+        <div class="image">
+            <img *ngIf="hasImages()" height="250px" width="180px" src="{{products_images_base_url}}{{product.images[0].name}}" alt="">
+            <img *ngIf="!hasImages()" height="250px" width="180px" src="{{default_image}}" alt="">
+        </div>
+
+        <div class="mx-auto price">
+            {{product.title}}
+        </div>
+    </div>
+    <div class="mx-auto price">
+        {{product.unitPrice}} DH
     </div>
 
-    <div class="image">
-        <img height="250px" width="180px" src="https://via.placeholder.com/150/FFFF00/000000?Text=WebsiteBuilders.com" alt="">
-    </div>
-    
-    <div class="mx-auto price">
-        200 DH
-    </div>
-    
     <div class="description">
-        description
+        {{product.description}}
     </div>
-    
+
     <div class="note">
-        note
+        {{product.note}}
     </div>
 </div>
