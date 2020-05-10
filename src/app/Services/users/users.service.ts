@@ -26,7 +26,7 @@ export class UsersService {
 
 
   signup(user: User) {
-    return this.http.post<any>(environment.main_api_url+"/users/signUp", user);
+    return this.http.post<any>(environment.main_api_url+"/users/signup", user);
   }
 
 }
