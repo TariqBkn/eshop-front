@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  main_api_url: "http://localhost:5555"
+  main_api_url: "http://localhost:5555",
+  static_productImages_url: "http://localhost:5555/products/images/"
 };
 
 /*
