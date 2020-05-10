@@ -26,6 +26,8 @@ export class LoginComponent implements OnInit {
 
   checkLogin() {
     this.showLoader=true;
+    this.username = this.username.trim()
+    this.password = this.password.trim()
     this.loginservice.authenticate(this.username, this.password).subscribe(
       data => {
         this.showLoader=false;
@@ -47,6 +49,7 @@ export class LoginComponent implements OnInit {
         }else if(error.message=="Http failure response for http://localhost:8080/login: 401 OK"){
           this.notificationService.warn("Email ou mot-de-passe incorrectes.");
         }else{
+          alert(error.message)
            this.notificationService.warn("Erreur inconnue.");
         }
           this.invalidLogin = true

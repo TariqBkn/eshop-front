@@ -14,68 +14,8 @@
 <!--Products -->
 <div class="" >
     <div class="d-flex align-content-around flex-wrap">
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
-        </div>
-        <div class="p-4">
-            <app-product></app-product> 
+         <div *ngFor="let product of products" class="p-4">
+             <app-product [product]="product"></app-product> 
         </div>
     </div>
 </div>
