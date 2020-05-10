@@ -7,16 +7,19 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './Services/guards/auth-guard.service';
 import { LogoutModuleComponent } from './logout-module/logout-module.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import { SimilarProductsComponent } from './similar-products/similar-products.component';
 
 
 const routes: Routes = [
   {path: "", component:HomePageComponent, canActivate:[AuthGuardService]},
   {path: "cart", component:CartComponent, canActivate:[AuthGuardService]},
-  {path: "details", component:ProductDetailsComponent, canActivate:[AuthGuardService]},
+  {path: "details/:id", component:ProductDetailsComponent, canActivate:[AuthGuardService]},
   {path: "signup", component:CreateAccountComponent},
   {path: "login", component:LoginComponent},
-  {path: "logout", component:LogoutModuleComponent, canActivate:[AuthGuardService]}
-];
+  {path: "logout", component:LogoutModuleComponent, canActivate:[AuthGuardService]},
+  {path: "checkout", component:CheckoutComponent},
+ ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
