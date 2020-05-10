@@ -26,6 +26,10 @@ import { LoginComponent } from './login/login.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar' 
 import {MatButtonModule} from '@angular/material/button';
 import { LogoutModuleComponent } from './logout-module/logout-module.component';
+import { CheckoutComponent } from './checkout/checkout.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import { SimilarProductsComponent } from './similar-products/similar-products.component';
+
  @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +41,9 @@ import { LogoutModuleComponent } from './logout-module/logout-module.component';
     ProductDetailsComponent,
     CreateAccountComponent,
     LoginComponent,
-    LogoutModuleComponent
+    LogoutModuleComponent,
+    CheckoutComponent,
+    SimilarProductsComponent
    ],
   imports: [
     BrowserModule,
@@ -56,6 +62,7 @@ import { LogoutModuleComponent } from './logout-module/logout-module.component';
     MatCardModule,
     MatSnackBarModule,
     MatButtonModule,
+    MatStepperModule,
     
    ],
   providers: [
