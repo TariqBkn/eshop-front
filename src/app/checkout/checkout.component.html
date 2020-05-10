@@ -1,0 +1,35 @@
+<mat-horizontal-stepper [linear]="isLinear" #stepper>
+<mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+    <ng-template matStepLabel>Récapitulatif</ng-template>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+    </mat-form-field>
+    <div>
+        <button mat-button matStepperNext>Confirmer</button>
+    </div>
+    </form>
+</mat-step>
+<mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+    <ng-template matStepLabel>Choisissez une méthode de paiment</ng-template>
+    <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+                required>
+    </mat-form-field>
+    <div>
+        <button mat-button matStepperPrevious>Précédent</button>
+        <button mat-button matStepperNext>Confirmer</button>
+    </div>
+    </form>
+</mat-step>
+<mat-step>
+    <ng-template matStepLabel>Confirmation</ng-template>
+    <p>Votre demande à été placé.</p>
+    <div>
+     <button mat-button>Quitter</button>
+    </div>
+</mat-step>
+</mat-horizontal-stepper>
