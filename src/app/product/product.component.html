@@ -4,8 +4,8 @@
     </div>
     <div (click)="goToDetails()">
         <div class="image">
-            <img *ngIf="hasImages()" height="250px" width="180px" src="{{products_images_base_url}}{{product.images[0].name}}" alt="">
-            <img *ngIf="!hasImages()" height="250px" width="180px" src="{{default_image}}" alt="">
+            <img *ngIf="hasImages()" height="200px" width="180px" src="{{products_images_base_url}}{{product.images[0].name}}" alt="">
+            <img *ngIf="!hasImages()" height="200px" width="180px" src="{{default_image}}" alt="">
         </div>
 
         <div class="mx-auto price">
