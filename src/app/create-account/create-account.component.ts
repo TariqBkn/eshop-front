@@ -68,8 +68,7 @@ export class CreateAccountComponent implements OnInit {
             }
         },
         error=>{
-          alert(error.status)
-          this.showSpinner=false;
+           this.showSpinner=false;
             if(error.status==409){
               this.notificationService.success("Cet email est utilisé par un autre compte")
             }else if(error.status==201){
