@@ -4,6 +4,7 @@ import { OrdersService } from '../Services/orders/orders.service';
 import { NotificationService } from '../Services/Notifications/notifications.service';
 import { Router } from '@angular/router';
 import { Order } from '../Models/Order';
+import { NumberOfOrderLinesInCartService } from '../Services/DataShare/number-of-order-lines-in-cart.service';
 
 @Component({
   selector: 'app-checkout',
@@ -17,7 +18,7 @@ export class CheckoutComponent implements OnInit {
   isLinear = true;
   payementMethodFormGroup: FormGroup;
   orderCheckedOut=false
-  constructor(private formBuilder: FormBuilder, private ordersService: OrdersService, private notificationService: NotificationService, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private ordersService: OrdersService, private notificationService: NotificationService, private router: Router, private numberOfOrderLinesInCartService: NumberOfOrderLinesInCartService) {}
 
   ngOnInit() {
     this.payementMethodFormGroup = this.formBuilder.group({
@@ -44,6 +45,7 @@ export class CheckoutComponent implements OnInit {
         this.orderCheckedOut=true
         this.notificationService.warn("Votre demande à été traité.")
         this.router.navigate([''])
+        this.numberOfOrderLinesInCartService.pushValue(0)
       },
       error=>{
         this.notificationService.warn("Votre demande n'a pas pu être traitée.");
