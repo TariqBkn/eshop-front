@@ -7,11 +7,18 @@ import { environment } from '../../../environments/environment'
 })
 export class OrderLinesService {
 
+
   constructor(private httpClient: HttpClient) { }
   
   addOrderLine(orderLine: OrderLine) {
-    alert(environment.main_api_url+"/orderlines")
     return this.httpClient.post<any>(environment.main_api_url+"/orderlines", orderLine);
   }
 
+  getOrderLines() {
+    return this.httpClient.get<any>(environment.main_api_url+"/orderlines");
+  }
+
+  delete(orderLineId: number) {
+    return this.httpClient.delete<any>(environment.main_api_url+"/orderlines/"+orderLineId);
+  }
 }
