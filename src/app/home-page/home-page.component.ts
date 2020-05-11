@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ProductsService } from '../Services/products/products.service';
-
+import { NgxSpinnerService } from "ngx-spinner";
+ 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -9,7 +10,7 @@ import { ProductsService } from '../Services/products/products.service';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private productsService: ProductsService) { }
+  constructor(private formBuilder: FormBuilder, private productsService: ProductsService, private spinner: NgxSpinnerService) {  }
   
   form = this.formBuilder.group({
     searchKeyWord:[]
@@ -18,13 +19,19 @@ export class HomePageComponent implements OnInit {
   products
 
   ngOnInit(): void {
-    this.productsService.getProducts().subscribe(
-      resp => {
-        console.log(JSON.stringify(resp.content))
-        this.products = resp.content
-      }
-    )
+    //this.spinner.show()
+    this.loadProductsFromServer();
+    //this.spinner.hide()
   }
 
-  
+
+
+  private loadProductsFromServer() {
+    this.productsService.getProducts().subscribe(resp => {
+      console.log(JSON.stringify(resp.pageable));
+      this.products = resp.content;
+    });
+  }
+
+
 }
