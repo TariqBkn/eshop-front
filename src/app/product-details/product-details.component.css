@@ -1,7 +1,13 @@
-@media (max-width: 1000px) {
-   img {
-       display: none;
-       width:auto;
-       height: auto;
+@media only screen and (max-width: 1800px) {
+   div.active-image {
+    display: none;
+   }
+   img{
+     margin: 2%;
+     width: 100%;
+     height: 120px;
+     position: relative;
+     left: 100%;
    } 
  }
+ 
