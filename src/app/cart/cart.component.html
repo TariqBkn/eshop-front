@@ -1,1 +1,24 @@
-<p>cart works!</p>
+<div class="container">
+    <div class="d-flex flex-wrap justify-content-between row">
+        <div>
+            
+        </div>
+        <div>
+            <button *ngIf="!confirmCommand" (click)="confirmerCommande()" mat-raised-button color="primary" class="m-2">Confirmer ma commande</button>
+            <button *ngIf="confirmCommand" (click)="annulerCommande()" mat-raised-button color="warn" class="m-2">Annuler</button>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <div *ngIf="!confirmCommand">
+            <h1>Lignes de commande :</h1>
+            <div *ngFor="let orderLine of orderLines">
+                <app-order-line (deleteOrderLine)="deleteOrderLine($event)" [orderLine]="orderLine" [textOnly]="textOnly"></app-order-line>
+            </div>
+        </div>
+
+        <div *ngIf="confirmCommand">
+            <app-checkout [orderId]="orderId"></app-checkout>
+        </div>
+    </div>
+</div>
