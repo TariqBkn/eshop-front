@@ -5,6 +5,7 @@ import { NotificationService } from '../Services/Notifications/notifications.ser
 import { Router } from '@angular/router';
 import {Location} from '@angular/common';
 import { error } from 'protractor';
+import { NumberOfOrderLinesInCartService } from '../Services/DataShare/number-of-order-lines-in-cart.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -12,7 +13,7 @@ import { error } from 'protractor';
 })
 export class CartComponent implements OnInit {
 
-  constructor(private orderLinesService : OrderLinesService, private notificationService:NotificationService, private router : Router, private myLocation: Location) { }
+  constructor(private orderLinesService : OrderLinesService, private notificationService:NotificationService, private router : Router, private myLocation: Location, private numberOfOrderLinesInCartService: NumberOfOrderLinesInCartService) { }
   orderLines : OrderLine[] = new Array()
   @Input() textOnly=false
   ngOnInit(): void {
@@ -29,6 +30,7 @@ export class CartComponent implements OnInit {
        this.responseJSON = JSON.stringify(response)
        this.goBackIfCartIsEmpty();
        if(this.orderLines[0]) this.orderId=this.orderLines[0].order.id
+       if(this.orderLines[0]) this.numberOfOrderLinesInCartService.pushValue(this.orderLines.length)
     }, error => {
       console.log(JSON.stringify(error));
       this.notificationService.warn("Une erreur s'est produite lors du chargement de vos lignes de commandes.");
