@@ -12,21 +12,22 @@
           
     </div>
     <div @slide>
-        
-        <a  *ngIf="authenticationService.isUserLoggedIn()" [routerLink]="['/logout']" class="m-4" aria-label="logout"  routerLinkActive="router-link-active"  rel="noopener" href="https://twitter.com/angular" title="Home"> 
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 9v-4l8 7-8 7v-4h-8v-6h8zm-2 10v-.083c-1.178.685-2.542 1.083-4 1.083-4.411 0-8-3.589-8-8s3.589-8 8-8c1.458 0 2.822.398 4 1.083v-2.245c-1.226-.536-2.577-.838-4-.838-5.522 0-10 4.477-10 10s4.478 10 10 10c1.423 0 2.774-.302 4-.838v-2.162z"/>
-            </svg>
-        </a>
 
-        <a class="m-4" *ngIf="authenticationService.isUserLoggedOut()" aria-label="signup" [routerLink]="['/signup']" routerLinkActive="router-link-active"  rel="noopener" href="https://twitter.com/angular" title="Home"> 
+        <a class="m-4" *ngIf="authenticationService.isUserLoggedOut()" aria-label="signup" [routerLink]="['/signup']" routerLinkActive="router-link-active"  rel="noopener" href="https://twitter.com/angular" title="Créer un Compte"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19.5 15c-2.483 0-4.5 2.015-4.5 4.5s2.017 4.5 4.5 4.5 4.5-2.015 4.5-4.5-2.017-4.5-4.5-4.5zm2.5 5h-2v2h-1v-2h-2v-1h2v-2h1v2h2v1zm-7.18 4h-14.815l-.005-1.241c0-2.52.199-3.975 3.178-4.663 3.365-.777 6.688-1.473 5.09-4.418-4.733-8.729-1.35-13.678 3.732-13.678 6.751 0 7.506 7.595 3.64 13.679-1.292 2.031-2.64 3.63-2.64 5.821 0 1.747.696 3.331 1.82 4.5z"/>
             </svg>
         </a>
 
-        <a *ngIf="authenticationService.isUserLoggedIn()" class="m-4" aria-label="Cart" [routerLink]="['/cart']" routerLinkActive="router-link-active"  rel="noopener" href="https://twitter.com/angular" title="Home"> 
+        <a *ngIf="authenticationService.isUserLoggedIn()" class="m-4" aria-label="Cart" [routerLink]="['/cart']" routerLinkActive="router-link-active"  rel="noopener" href="https://twitter.com/angular" title="Panier"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"/>
             </svg>
+        </a>      
+          
+        <a  *ngIf="authenticationService.isUserLoggedIn()" [routerLink]="['/logout']" class="m-4" aria-label="logout"  routerLinkActive="router-link-active"  rel="noopener" href="https://twitter.com/angular" title="Se Déconnecter"> 
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 9v-4l8 7-8 7v-4h-8v-6h8zm-2 10v-.083c-1.178.685-2.542 1.083-4 1.083-4.411 0-8-3.589-8-8s3.589-8 8-8c1.458 0 2.822.398 4 1.083v-2.245c-1.226-.536-2.577-.838-4-.838-5.522 0-10 4.477-10 10s4.478 10 10 10c1.423 0 2.774-.302 4-.838v-2.162z"/>
+            </svg>
         </a>
+
     </div>
      
 </div>
