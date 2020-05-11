@@ -42,6 +42,6 @@ export class ProductsService {
     return this.httpClient.get<any>(this.productsBaseUrl, this.httpOptions);
   }
   getSimilarProducts(productId: number) {
-    if(productId) return this.httpClient.get<any>(this.productsBaseUrl+productId+"/similar", this.httpOptions);
+    return this.httpClient.get<any>(this.productsBaseUrl+productId+"/similar", this.httpOptions);
   }
 }
