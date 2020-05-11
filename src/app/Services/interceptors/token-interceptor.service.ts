@@ -10,7 +10,7 @@ export class TokenInterceptorService implements HttpInterceptor {
   constructor(private authenticationService: AuthenticationService) {}
 
   intercept(request : HttpRequest<any>, next: HttpHandler) {
-      if( !request.url.match("/users/signup") && !request.url.match("users/login") ){
+      if( !request.url.match("/users/signup") && !request.url.match("users/login")  && this.authenticationService.isUserLoggedIn()){
         let authorizedReq = request.clone({
         setHeaders:{
           Authorization: 'Bearer '+this.authenticationService.getToken()
