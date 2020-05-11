@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ProductComponent implements OnInit {
   @Input('product') product : Product
+  @Input() textOnly=false
   default_image: string="../../assets/images/notfound.png";
 
   constructor(private router: Router) { }

@@ -1,26 +1,25 @@
 <div>
-    <div class="add-to-wishlist">
-        <button mat-button>+</button>
-    </div>
-    <div (click)="goToDetails()">
-        <div class="image">
-            <img *ngIf="hasImages()" height="200px" width="180px" src="{{products_images_base_url}}{{product.images[0].name}}" alt="">
-            <img *ngIf="!hasImages()" height="200px" width="180px" src="{{default_image}}" alt="">
-        </div>
+    <div class="product-content"  (click)="goToDetails()">
+        <div>
+            <div *ngIf="!textOnly" class="image">
+                <img *ngIf="hasImages()" height="200px" width="180px" src="{{products_images_base_url}}{{product.images[0].name}}" alt="">
+                <img *ngIf="!hasImages()" height="200px" width="180px" src="{{default_image}}" alt="">
+            </div>
 
+            <div class="mx-auto price">
+                {{product.title}}
+            </div>
+        </div>
         <div class="mx-auto price">
-            {{product.title}}
+            {{product.unitPrice}} DH
         </div>
-    </div>
-    <div class="mx-auto price">
-        {{product.unitPrice}} DH
-    </div>
 
-    <div class="description">
-        {{product.description}}
-    </div>
+        <div class="description">
+            {{product.description}}
+        </div>
 
-    <div class="note">
-        {{product.note}}
+        <div class="note">
+            {{product.note}} stars
+        </div>
     </div>
 </div>
