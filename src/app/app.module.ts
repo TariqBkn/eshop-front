@@ -17,24 +17,24 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatInputModule} from '@angular/material/input';
-import {  MatCardModule } from '@angular/material/card'
+import { MatCardModule } from '@angular/material/card'
 import { MatChipsModule} from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { CreateAccountComponent } from './create-account/create-account.component';
 import { LoginComponent } from './login/login.component';
-import {MatSnackBarModule} from '@angular/material/snack-bar' 
-import {MatButtonModule} from '@angular/material/button';
+import { MatSnackBarModule} from '@angular/material/snack-bar' 
+import { MatButtonModule} from '@angular/material/button';
 import { LogoutModuleComponent } from './logout-module/logout-module.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule} from '@angular/material/stepper';
 import { SimilarProductsComponent } from './similar-products/similar-products.component';
 import { OrderLineComponent } from './order-line/order-line.component';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule} from '@angular/material/list';
 import { CommentComponent } from './comment/comment.component';
 import { CommentsComponent } from './comments/comments.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
-
+import { MatBadgeModule } from '@angular/material/badge'
  @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +73,7 @@ import { NewCommentComponent } from './new-comment/new-comment.component';
     MatButtonModule,
     MatStepperModule,
     MatListModule,
+    MatBadgeModule,
     
    ],
   providers: [
