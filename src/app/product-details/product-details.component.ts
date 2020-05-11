@@ -42,7 +42,8 @@ export class ProductDetailsComponent implements OnInit {
   } 
 
   hasImages(){
-    return this.product.images.length
+    if(this.product.images) { return this.product.images.length>0 }
+    return false
   }
   
   buyForm = this.formBuilder.group({
@@ -57,7 +58,7 @@ export class ProductDetailsComponent implements OnInit {
   private loadProductDetails() {
     this.productsService.getProductById(this.productId).subscribe(response => {
       this.product = response;
-      this.active_image = this.product.images[0].name;
+      if(this.product.images && this.product.images.length) this.active_image = this.product.images[0].name;
       this.productId = this.product.id;
     }, error => {
       if (error.status == 404) {
@@ -77,11 +78,14 @@ export class ProductDetailsComponent implements OnInit {
       this.notificationsService.warn('Quantité erronée, ne pas dépasser la quantité en stock!')
       return;
     }
-    let orderLine = new OrderLine(this.product, this.buyForm.get('quantity').value);
+    let orderLine = new OrderLine(this.product, parseInt(this.buyForm.get('quantity').value));
     this.orderLinesService.addOrderLine(orderLine).subscribe(
       resp =>{
+          this.notificationsService.warn("Commande Ajoutée.")
+          this.router.navigate(['cart'])
         },
       err=>{
+        if(err.status==422){ this.notificationsService.warn("Vous avez dépasser la quantité en stock de ce produit.")}
         console.log("erroor*****"+JSON.stringify(err))
       }
     )
