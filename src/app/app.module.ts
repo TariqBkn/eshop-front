@@ -29,6 +29,11 @@ import { LogoutModuleComponent } from './logout-module/logout-module.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import { SimilarProductsComponent } from './similar-products/similar-products.component';
+import { OrderLineComponent } from './order-line/order-line.component';
+import {MatListModule} from '@angular/material/list';
+import { CommentComponent } from './comment/comment.component';
+import { CommentsComponent } from './comments/comments.component';
+import { NewCommentComponent } from './new-comment/new-comment.component';
 
  @NgModule({
   declarations: [
@@ -43,7 +48,11 @@ import { SimilarProductsComponent } from './similar-products/similar-products.co
     LoginComponent,
     LogoutModuleComponent,
     CheckoutComponent,
-    SimilarProductsComponent
+    SimilarProductsComponent,
+    OrderLineComponent,
+    CommentComponent,
+    CommentsComponent,
+    NewCommentComponent
    ],
   imports: [
     BrowserModule,
@@ -63,6 +72,7 @@ import { SimilarProductsComponent } from './similar-products/similar-products.co
     MatSnackBarModule,
     MatButtonModule,
     MatStepperModule,
+    MatListModule,
     
    ],
   providers: [
