@@ -1,35 +1,34 @@
 <mat-horizontal-stepper [linear]="isLinear" #stepper>
-<mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-    <ng-template matStepLabel>Récapitulatif</ng-template>
-    <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-    </mat-form-field>
+
+<mat-step>
+    <ng-template matStepLabel>Récaputilatif</ng-template>
+    <p>{{order.totalCost}} DH en total</p>
     <div>
-        <button mat-button matStepperNext>Confirmer</button>
+      <button mat-button matStepperNext>Confirmer</button>
     </div>
-    </form>
 </mat-step>
-<mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+
+<mat-step [stepControl]="payementMethodFormGroup"  *ngIf="!orderCheckedOut">
+    <form [formGroup]="payementMethodFormGroup" (ngSubmit)="onCheckout()">
     <ng-template matStepLabel>Choisissez une méthode de paiment</ng-template>
     <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                required>
+        <mat-label></mat-label>
+        <input matInput placeholder="Paypal" formControlName="payementMethod">
     </mat-form-field>
     <div>
-        <button mat-button matStepperPrevious>Précédent</button>
-        <button mat-button matStepperNext>Confirmer</button>
-    </div>
+       <button mat-button matStepperPrevious>Précédent</button>
+       <button [disabled]="payementMethodFormGroup.invalid" mat-button matStepperNext>Confirmer</button> 
+     </div>
     </form>
 </mat-step>
-<mat-step>
-    <ng-template matStepLabel>Confirmation</ng-template>
-    <p>Votre demande à été placé.</p>
+
+
+<mat-step *ngIf="orderCheckedOut">
+    <ng-template matStepLabel>Fin de l'opération</ng-template>
+    <p>Votre demande a été traité</p>
     <div>
-     <button mat-button>Quitter</button>
+      <button mat-button matStepperNext>Quitter</button>
     </div>
 </mat-step>
+
 </mat-horizontal-stepper>
