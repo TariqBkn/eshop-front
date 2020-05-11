@@ -91,8 +91,9 @@ isUserLoggedIn() {
   }
 
   logOut() {
-   // this.requestData.notify(0);
      sessionStorage.clear();
+     this.router.navigate(['login'])
+     this.notificationService.neutral("Déconnexion")
   }
 
   getToken(): string{
