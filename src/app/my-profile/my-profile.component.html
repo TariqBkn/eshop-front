@@ -1,0 +1,20 @@
+<mat-tab-group mat-stretch-tabs backgroundColor="primary" color="primary">
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+              <span>Mes Coordonnées</span>
+      </ng-template>
+      <div class="container p-4">
+          <app-user-info></app-user-info>
+      </div>
+    </mat-tab>
+  
+<mat-tab>
+    <ng-template mat-tab-label>
+             <span>Historique de Vos Achats</span>
+    </ng-template>
+    <div class="container p-4">
+        <app-checkouts-history></app-checkouts-history>
+    </div>
+</mat-tab>
+</mat-tab-group>  
