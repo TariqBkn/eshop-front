@@ -9,6 +9,7 @@ import { AuthGuardService } from './Services/guards/auth-guard.service';
 import { LogoutModuleComponent } from './logout-module/logout-module.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { SimilarProductsComponent } from './similar-products/similar-products.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: "login", component:LoginComponent},
   {path: "logout", component:LogoutModuleComponent, canActivate:[AuthGuardService]},
   {path: "checkout", component:CheckoutComponent},
+  {path: "profile", component:MyProfileComponent, canActivate:[AuthGuardService]},
  ];
 
 @NgModule({
