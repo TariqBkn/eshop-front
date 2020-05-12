@@ -34,8 +34,14 @@ import { MatListModule} from '@angular/material/list';
 import { CommentComponent } from './comment/comment.component';
 import { CommentsComponent } from './comments/comments.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
-import { MatBadgeModule } from '@angular/material/badge'
- @NgModule({
+import { MatBadgeModule } from '@angular/material/badge';
+import { MyProfileComponent } from './my-profile/my-profile.component';
+import { UserInfoComponent } from './user-info/user-info.component';
+import { CheckoutsHistoryComponent } from './checkouts-history/checkouts-history.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { NewBulkProductsComponent } from './AdminOnlyComponents/new-bulk-products/new-bulk-products.component';
+
+@NgModule({
   declarations: [
     AppComponent,
     CarouselComponent,
@@ -52,7 +58,11 @@ import { MatBadgeModule } from '@angular/material/badge'
     OrderLineComponent,
     CommentComponent,
     CommentsComponent,
-    NewCommentComponent
+    NewCommentComponent,
+    MyProfileComponent,
+    UserInfoComponent,
+    CheckoutsHistoryComponent,
+    NewBulkProductsComponent
    ],
   imports: [
     BrowserModule,
@@ -74,7 +84,7 @@ import { MatBadgeModule } from '@angular/material/badge'
     MatStepperModule,
     MatListModule,
     MatBadgeModule,
-    
+    MatTabsModule
    ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
