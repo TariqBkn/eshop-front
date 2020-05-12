@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Order } from 'src/app/Models/Order';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
+  
+  constructor(private httpClient:HttpClient) { }
+
   getOrder(orderId: number) {
     return this.httpClient.get<any>(environment.main_api_url+"/orders/"+orderId);
   }
@@ -13,5 +17,7 @@ export class OrdersService {
     return this.httpClient.patch<any>(environment.main_api_url+"/orders/"+orderId+"/checkout",null);
   }
 
-  constructor(private httpClient:HttpClient) { }
+  myCheckouts() {
+    return this.httpClient.get<Order[]>(environment.main_api_url+"/orders/checkouts");
+  }
 }
