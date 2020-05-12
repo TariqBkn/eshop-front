@@ -8,7 +8,7 @@
             <div><u>Quantité : </u> {{orderLine.quantity}}</div>
             <div><u>Sous-total :</u> {{orderLine.cost}} DH</div>
         </div>
-        <div class="order-3 col-sm-12 col-md-4">
+        <div *ngIf="!readOnly" class="order-3 col-sm-12 col-md-4">
             <button mat-button [class.btn-danger]="confirmDelete" (click)="deleteOrderLine()">{{confirmDelete?'Confirmer la Suppression':'Supprimer'}}</button>
             <button mat-button *ngIf="confirmDelete" color="primary"(click)="cancelDelete()">Annuler</button>
          </div>

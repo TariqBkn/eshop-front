@@ -13,8 +13,9 @@ export class OrderLineComponent implements OnInit {
   @Input() orderLine: OrderLine
   @Input() textOnly:boolean = false
   @Output('deleteOrderLine') deleteOrderLineEmitter : EventEmitter<number> = new EventEmitter();
+  @Input() readOnly=false;
   confirmDelete : boolean = false
-  constructor(private notificationsService: NotificationService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
