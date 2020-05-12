@@ -1,0 +1,10 @@
+<div *ngIf="orders.length==0" class="container m-4 p-"  >
+    <h1>Les achats que vous allez effectuer apparaitront ici.</h1>
+</div>
+<div *ngFor="let order of orders">  
+    <h1>Prix Total de la Commande : {{order.totalCost}} DH </h1> 
+    <div *ngFor="let orderLine of order.orderLines">
+        <app-order-line [readOnly]="true" [orderLine]="orderLine" [textOnly]="textOnly"></app-order-line>
+    </div>
+    <br>
+</div>
