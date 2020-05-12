@@ -1,16 +1,18 @@
+<div class="container p-2">
 <mat-toolbar color="primary">
-    <span>Créer un Compte: </span>
+    <span *ngIf="!edit">Créer un Compte</span>
+    <span *ngIf="edit">Mes informations</span>
 </mat-toolbar>
 <br>
-<div class="container">
+<div>
 <mat-card-content>
     <form  class="form" [formGroup]="registrationForm" (ngSubmit)="onClickSubmit()"  >
         
         <div class="form-group">   
             <mat-form-field class="full-width" appearance="outline" class="full">
             <mat-label> Prénom </mat-label>
-            <input [class.is-invalid]="isFieldValid('firstname')" type="text" matInput formControlName="firstname" >
-            <mat-hint class="text-danger" *ngIf="isFieldValid('firstname')">Prénom n'est pas renseigné.</mat-hint>
+            <input [class.is-invalid]="isFieldValid('firstName')" type="text" matInput formControlName="firstName" >
+            <mat-hint class="text-danger" *ngIf="isFieldValid('firstName')">Prénom n'est pas renseigné.</mat-hint>
             </mat-form-field>
             
         </div>
@@ -19,9 +21,9 @@
             <mat-form-field class="full-width" appearance="outline" class="full">
             <mat-label>Nom</mat-label>
             <input 
-            [class.is-invalid]="isFieldValid('lastname')"
-            type="text" matInput formControlName="lastname" >
-            <mat-hint class="text-danger" *ngIf="isFieldValid('lastname')">Nom n'est pas renseigné.</mat-hint>
+            [class.is-invalid]="isFieldValid('lastName')"
+            type="text" matInput formControlName="lastName" >
+            <mat-hint class="text-danger" *ngIf="isFieldValid('lastName')">Nom n'est pas renseigné.</mat-hint>
             </mat-form-field>
         </div>
 
@@ -38,8 +40,8 @@
         <div class="form-group"> 
             <mat-form-field class="full-width" appearance="outline" class="full">
                 <mat-label>Rue</mat-label>
-                <input type="text"  matInput formControlName="streetname" 
-                [class.is-invalid]="isFieldValid('streetname')" 
+                <input type="text"  matInput formControlName="streetName" 
+                [class.is-invalid]="isFieldValid('streetName')" 
                 >
                 <mat-hint class="text-danger" *ngIf="isFieldValid('city')">Rue n'est pas renseignée.</mat-hint>
             </mat-form-field>
@@ -55,7 +57,7 @@
             </mat-form-field>
         </div>
 
-        <div class="form-group">
+        <div *ngIf="!edit" class="form-group">
              <mat-form-field class="full-width" appearance="outline" class="full">
                 <mat-label>Email</mat-label>
                 <input [class.is-invalid]="isFieldValid('email')"  matInput formControlName="email" placeholder="user@example.com">
@@ -94,7 +96,8 @@
                 class="btn-lg"
                 >
                     <span *ngIf="showSpinner">Traitement...</span>
-                    <span *ngIf="!showSpinner">Créer un Compte</span>
+                    <span *ngIf="!showSpinner && !edit">Créer un Compte</span>
+                    <span *ngIf="!showSpinner && edit">Confirmer</span>
                 </button>
             </div>
             <div *ngIf="showSpinner"><mat-spinner diameter="50" color="primary"></mat-spinner></div>
@@ -106,4 +109,4 @@
 <br>
 <mat-toolbar>
 </mat-toolbar>
-
+</div>
