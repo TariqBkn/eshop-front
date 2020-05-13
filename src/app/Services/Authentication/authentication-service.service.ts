@@ -87,7 +87,7 @@ isUserLoggedIn() {
     if(sessionStorage.getItem('role')==null){
        console.log('role null'); return false;
     }
-    return sessionStorage.getItem('role')=="ADMIN";
+    return sessionStorage.getItem('role')=="ADMIN" && this.isUserLoggedIn();
   }
 
   logOut() {
