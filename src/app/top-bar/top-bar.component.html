@@ -18,6 +18,11 @@
             </svg>
         </a>
 
+        <a class="m-4" *ngIf="authenticationService.isCurrentUserAdmin()" aria-label="newProducts" [routerLink]="['/products/add']" routerLinkActive="router-link-active"  rel="noopener" href="https://twitter.com/angular" title="Ajouter des Produits"> 
+            <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M20 15h4.071v2h-4.071v4.071h-2v-4.071h-4.071v-2h4.071v-4.071h2v4.071zm-8 6h-12v-2h12v2zm0-4.024h-12v-2h12v2zm0-3.976h-12v-2h12v2zm12-4h-24v-2h24v2zm0-4h-24v-2h24v2z"/>
+            </svg>
+        </a>
+
         <a *ngIf="authenticationService.isUserLoggedIn()" class="m-4" aria-label="Cart" [routerLink]="['/cart']" routerLinkActive="router-link-active"  rel="noopener" href="https://twitter.com/angular" title="Panier"> 
             <span [matBadgeHidden]="noProductsInCart()" matBadgeColor="warn" matBadge="{{numberOfProductsInCart}}" matBadgePosition="above after">    
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path d="M10 19.5c0 .829-.672 1.5-1.5 1.5s-1.5-.671-1.5-1.5c0-.828.672-1.5 1.5-1.5s1.5.672 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5 1.5-.671 1.5-1.5c0-.828-.672-1.5-1.5-1.5zm1.336-5l1.977-7h-16.813l2.938 7h11.898zm4.969-10l-3.432 12h-12.597l.839 2h13.239l3.474-12h1.929l.743-2h-4.195z"/>
@@ -25,12 +30,12 @@
             </span>
         </a>      
           
-        <a  *ngIf="authenticationService.isUserLoggedIn()" [routerLink]="['/profile']" class="m-4" aria-label="logout"  routerLinkActive="router-link-active"  rel="noopener" href="https://twitter.com/angular" title="Se Déconnecter"> 
+        <a  *ngIf="authenticationService.isUserLoggedIn()" [routerLink]="['/profile']" class="m-4" aria-label="monProfile"  routerLinkActive="router-link-active"  rel="noopener" href="https://twitter.com/angular" title="Mon Profile"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7.753 18.305c-.261-.586-.789-.991-1.871-1.241-2.293-.529-4.428-.993-3.393-2.945 3.145-5.942.833-9.119-2.489-9.119-3.388 0-5.644 3.299-2.489 9.119 1.066 1.964-1.148 2.427-3.393 2.945-1.084.25-1.608.658-1.867 1.246-1.405-1.723-2.251-3.919-2.251-6.31 0-5.514 4.486-10 10-10s10 4.486 10 10c0 2.389-.845 4.583-2.247 6.305z"/>
             </svg>
         </a>
 
-        <a  *ngIf="authenticationService.isUserLoggedIn()" [routerLink]="['/logout']" class="m-4" aria-label="logout"  routerLinkActive="router-link-active"  rel="noopener" href="https://twitter.com/angular" title="Mon Profile"> 
+        <a  *ngIf="authenticationService.isUserLoggedIn()" [routerLink]="['/logout']" class="m-4" aria-label="logout"  routerLinkActive="router-link-active"  rel="noopener" href="https://twitter.com/angular" title="Se Déconnecter"> 
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16 9v-4l8 7-8 7v-4h-8v-6h8zm-2 10v-.083c-1.178.685-2.542 1.083-4 1.083-4.411 0-8-3.589-8-8s3.589-8 8-8c1.458 0 2.822.398 4 1.083v-2.245c-1.226-.536-2.577-.838-4-.838-5.522 0-10 4.477-10 10s4.478 10 10 10c1.423 0 2.774-.302 4-.838v-2.162z"/>
             </svg>
         </a>
