@@ -11,7 +11,6 @@ import { SimilarProduct } from 'src/app/Models/SimilarProduct';
 })
 export class ProductsService {
 
-
   token: string;
   userId: string;
    
@@ -44,4 +43,8 @@ export class ProductsService {
   getSimilarProducts(productId: number) {
     return this.httpClient.get<any>(this.productsBaseUrl+productId+"/similar", this.httpOptions);
   }
+  uploadProductsCsvFile(formData: FormData) {
+    return this.httpClient.post<String>(this.productsBaseUrl+"bulk-add",formData);
+  }
+
 }
