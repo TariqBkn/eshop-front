@@ -37,9 +37,9 @@ export class LoginComponent implements OnInit {
         }
           this.notificationService.neutral('Connecté.');
 
-        if(this.loginservice.isCurrentUserAdmin()){
-          this.router.navigate(['admin/stats'])
-        }else{this.router.navigate([''])}
+         
+          this.router.navigate([''])
+         
         this.invalidLogin = false
       },
       error => {
