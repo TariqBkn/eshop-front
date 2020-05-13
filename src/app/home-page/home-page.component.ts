@@ -19,9 +19,8 @@ export class HomePageComponent implements OnInit {
   products
 
   ngOnInit(): void {
-    //this.spinner.show()
+    this.spinner.show()
     this.loadProductsFromServer();
-    //this.spinner.hide()
   }
 
 
@@ -33,5 +32,8 @@ export class HomePageComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit(){
+    this.spinner.hide()
+  }
 
 }
