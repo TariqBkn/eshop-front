@@ -1,0 +1,75 @@
+
+<div class="d-flex d-flex-between">
+    <div class="container">
+        <div class="row custyle">
+                <mat-form-field class="example-form-field">
+                        <input matInput  type="text" (input)="onSearchChange($event.target.value)" placeholder="Chercher des utilisateurs" [(ngModel)]="value">
+                        <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="resetValue()">
+                                <span>X</span>
+                        </button>
+                        <button mat-button disabled *ngIf="users.length>=0 && isWaiting" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                                <mat-spinner [diameter]="32"></mat-spinner>
+                        </button>
+                        <mat-hint *ngIf="value && users.length>0">{{users.length}} results</mat-hint>
+                </mat-form-field>
+        <table class="table table-striped custab" *ngIf="users.length>0">
+        <thead>
+            <tr>
+                <th class="text-center">Id</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">Nom</th>
+                <th class="text-center">Prenom</th>
+                <th class="text-center">Ville</th>
+                <th class="text-center">Quartier</th>
+                <th class="text-center">N°</th>
+                <th class="text-center">Compte verouillé</th>
+            </tr>
+        </thead>
+                <tr *ngFor="let user of users" [className]="user.accountLocked?'bg-danger text-white':''">
+                    <td>
+                            <strong>{{user.id}}</strong>
+                    </td>
+                    <td>
+                            {{user.email}}
+                    </td>
+                    <td>
+                            {{user.lastName}}
+                    </td>
+                    <td>
+                            {{user.firstName}}
+                    </td>
+
+                    <td>
+                            {{user.city}}
+                    </td>  
+
+                    <td>
+                            {{user.street}}
+                    </td>
+
+                    <td>
+                            {{user.number}}
+                    </td>
+                    
+
+                    <td class="text-center">
+                           <mat-slide-toggle  (change)="switchLocked(user.id)" [checked]="!user.accountNonLocked"></mat-slide-toggle>
+                     </td>   
+                </tr>
+        </table>
+        <hr>
+        <ul class="nav nav-pills" *ngIf="users.length>0">
+            <li class="nav-item" >
+                <button disabled class="nav-link">Pages :</button>
+            </li>
+            <li class="nav-item" *ngFor="let p of pages; let i=index">
+                <button class="nav-link" (click)="pageChanged(i,$event)" aria-label="Page i">{{i}}</button>
+            </li>
+        </ul>
+        </div>
+
+        <div class="alert alert-danger" style="display: block;" role="alert" *ngIf="users.length==0 && value ">
+                Aucun résultat
+        </div>
+    </div>
+</div>  
