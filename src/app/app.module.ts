@@ -39,9 +39,13 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { CheckoutsHistoryComponent } from './checkouts-history/checkouts-history.component';
 import { MatTabsModule } from '@angular/material/tabs';
-import { NewBulkProductsComponent } from './AdminOnlyComponents/new-bulk-products/new-bulk-products.component';
+import { NewBulkProductsComponent } from './new-bulk-products/new-bulk-products.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { UsersListComponent } from './users-list/users-list.component';
+ 
 
-@NgModule({
+ @NgModule({
   declarations: [
     AppComponent,
     CarouselComponent,
@@ -62,8 +66,10 @@ import { NewBulkProductsComponent } from './AdminOnlyComponents/new-bulk-product
     MyProfileComponent,
     UserInfoComponent,
     CheckoutsHistoryComponent,
-    NewBulkProductsComponent
-   ],
+    NewBulkProductsComponent,
+    UsersListComponent,
+
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -84,8 +90,13 @@ import { NewBulkProductsComponent } from './AdminOnlyComponents/new-bulk-product
     MatStepperModule,
     MatListModule,
     MatBadgeModule,
-    MatTabsModule
+    MatTabsModule,
+    MatTableModule,
+    MatSlideToggleModule,
+    
    ],
+   exports: [ 
+  ],
   providers: [
     { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
         JwtHelperService,
