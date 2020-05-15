@@ -11,4 +11,9 @@ export class Product {
     note:number;
     promotionRatio:number;
     quantityInStock:number;
+
+
+    public getNameOfFirstImage(){
+        if(this.images) return this.images[0].name;
+    }
 }
