@@ -7,7 +7,7 @@ import { User } from '../../Models/User'
   providedIn: 'root'
 })
 export class UsersService {
-  
+
   token:string
 
   constructor(private http : HttpClient,private authenticationService:AuthenticationService) { 
@@ -25,8 +25,6 @@ export class UsersService {
     headers: new HttpHeaders()
   }
 
-
-
   signup(user: User) {
     return this.http.post<any>(environment.main_api_url+"/users/signup", user);
   }
@@ -37,5 +35,17 @@ export class UsersService {
   
   update(user: User) {
     return this.http.patch<any>(environment.main_api_url+"/users/me", user)
+  }
+
+  getUsers(page: number) {
+    return this.http.get<any>(environment.main_api_url+"/users/"+page)
+  }
+
+  getUserbyKeyWord(key: string, page: number) {
+    return this.http.get<any>(environment.main_api_url+"/users/search/"+key)
+  }
+  
+  alterAccountUnlocked(userId: any) {
+    return this.http.patch<any>(environment.main_api_url+"/users/status/alter", userId)
   }
 }
