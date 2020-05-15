@@ -8,10 +8,10 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './Services/guards/auth-guard.service';
 import { LogoutModuleComponent } from './logout-module/logout-module.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-import { SimilarProductsComponent } from './similar-products/similar-products.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
-import { NewBulkProductsComponent } from './AdminOnlyComponents/new-bulk-products/new-bulk-products.component';
+import { NewBulkProductsComponent } from './new-bulk-products/new-bulk-products.component';
 import { AdminGuardService } from './Services/guards/admin-guard.service';
+import { UsersListComponent } from './users-list/users-list.component';
 
 
 const routes: Routes = [
@@ -24,6 +24,7 @@ const routes: Routes = [
   {path: "checkout", component:CheckoutComponent},
   {path: "profile", component:MyProfileComponent, canActivate:[AuthGuardService]},
   {path: "products/add", component:NewBulkProductsComponent, canActivate:[AuthGuardService, AdminGuardService]},
+  {path: "users", component: UsersListComponent, canActivate:[AuthGuardService, AdminGuardService]},
  ];
 
 @NgModule({
