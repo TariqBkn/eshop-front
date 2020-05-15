@@ -47,4 +47,7 @@ export class ProductsService {
     return this.httpClient.post<String>(this.productsBaseUrl+"bulk-add",formData);
   }
 
+  getImage(ImageName: string) {
+    return this.httpClient.get<String>(this.productsBaseUrl+"images/"+ImageName);
+  }
 }
