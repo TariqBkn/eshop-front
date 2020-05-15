@@ -2,7 +2,7 @@
     <div class="product-content"  (click)="goToDetails()">
         <div>
             <div *ngIf="!textOnly" class="image">
-                <img *ngIf="hasImages()" height="200px" width="180px" src="{{products_images_base_url}}{{product.images[0].name}}" alt="">
+                <img *ngIf="hasImages()" height="200px" width="180px" src="{{image}}" alt="">
                 <img *ngIf="!hasImages()" height="200px" width="180px" src="{{default_image}}" alt="">
             </div>
 

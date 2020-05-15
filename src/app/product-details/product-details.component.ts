@@ -21,6 +21,8 @@ export class ProductDetailsComponent implements OnInit {
   active_image:string
   previous_image:string
   productId :number
+  ImagesNamesAndValues = new Map<string, string>();  
+  
   constructor(private spinner: NgxSpinnerService,
               private productsService: ProductsService,
               private notificationsService : NotificationService,
@@ -38,8 +40,20 @@ export class ProductDetailsComponent implements OnInit {
 
     this.loadProductDetails();
     
+  
      this.spinner.hide();
   } 
+  getProductImages() {
+    this.product.images.forEach(image => {
+      this.productsService.getImage(image.name).subscribe(
+        response => console.log(JSON.stringify(response)),
+        error => { 
+          this.ImagesNamesAndValues[image.name]="data:image/jpg;base64,"+error.error.text;
+          if(this.hasImages()) this.active_image=this.product.images[0].name
+        }
+      )
+    });
+  }
 
   hasImages(){
     if(this.product.images) { return this.product.images.length>0 }
@@ -58,8 +72,8 @@ export class ProductDetailsComponent implements OnInit {
   private loadProductDetails() {
     this.productsService.getProductById(this.productId).subscribe(response => {
       this.product = response;
-      if(this.product.images && this.product.images.length) this.active_image = this.product.images[0].name;
       this.productId = this.product.id;
+      this.getProductImages();
     }, error => {
       if (error.status == 404) {
         this.notificationsService.warn("Ce produit n'est plus dans la base de données.");
@@ -68,6 +82,9 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
+  getImage(imageName: string){
+    return this.ImagesNamesAndValues[imageName];
+  }
   setActiveImage(image_name:string){
     this.previous_image=this.active_image
     this.active_image=image_name
