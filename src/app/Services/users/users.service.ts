@@ -41,7 +41,7 @@ export class UsersService {
     return this.http.get<any>(environment.main_api_url+"/users/"+page)
   }
 
-  getUserbyKeyWord(key: string, page: number) {
+  getUsersByKeyWord(key: string, page: number) {
     return this.http.get<any>(environment.main_api_url+"/users/search/"+key)
   }
   
