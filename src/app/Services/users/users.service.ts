@@ -8,6 +8,7 @@ import { User } from '../../Models/User'
 })
 export class UsersService {
 
+
   token:string
 
   constructor(private http : HttpClient,private authenticationService:AuthenticationService) { 
@@ -47,4 +48,14 @@ export class UsersService {
   alterAccountUnlocked(userId: any) {
     return this.http.patch<any>(environment.main_api_url+"/users/status/alter", userId)
   }
+  getNumberOfBlockedUsers() {
+    return this.http.get<any>(environment.main_api_url+"/users/blocked/count")
+  }
+  getNumberOfUsers() {
+    return this.http.get<any>(environment.main_api_url+"/users/count")
+  }
+  delete(id: number) {
+    return this.http.delete<any>(environment.main_api_url+"/users/"+id)
+  }
+
 }
