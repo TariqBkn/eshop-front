@@ -17,6 +17,9 @@
         <span *ngIf="showLoader">Traitement...</span>
       </button>
       <span *ngIf="showLoader"><mat-spinner diameter="45" color="primary"></mat-spinner></span>
+      <button [disabled]="showLoader" (click)=goToSignup() class="m-2" mat-button color="primary">
+        <span *ngIf="!showLoader">Créer un Compte</span>
+      </button>
     </div>
   </form>
 

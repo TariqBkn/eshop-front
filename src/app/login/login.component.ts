@@ -23,7 +23,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  goToSignup(){
+    this.router.navigate(['signup'])
+  }
   checkLogin() {
     this.showLoader=true;
     this.username = this.username.trim()

@@ -16,9 +16,9 @@ div.container{
 .button {
     border-radius: 4px;
     border: none;
-    color: #441919;
+    color:black;
     text-align: center;
-    font-size: 28px;
+    font-size: 20px;
     width: 200px;
     transition: all 0.5s;
     cursor: pointer;
