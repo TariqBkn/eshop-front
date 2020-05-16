@@ -15,7 +15,6 @@ export class UsersService {
       if(data) {
         this.token=data.token;
         this.httpOptions.headers=new HttpHeaders({
-          Authorization : 'Bearer '+data.token,
           'Content-Type':'application/json'
          })
       }
@@ -42,7 +41,7 @@ export class UsersService {
   }
 
   getUsersByKeyWord(key: string, page: number) {
-    return this.http.get<any>(environment.main_api_url+"/users/search/"+key)
+    return this.http.get<any>(environment.main_api_url+"/users/search/"+key+"/pages/"+page)
   }
   
   alterAccountUnlocked(userId: any) {
