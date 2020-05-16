@@ -141,6 +141,19 @@ export class CreateAccountComponent implements OnInit {
       }
     }
 
+    delete(){
+      if(confirm("êtes vous sûr de vouloir supprimer votre compte?")){
+        this.usersService.delete(this.connectedUser.id).subscribe(
+          resp => {
+            this.notificationService.warn("Compte supprimé")
+            this.router.navigate(['login'])
+          },
+          err => {
+            this.notificationService.warn("Impossible de supprimer votre compte.")
+          }
+        )
+      }
+    }
     
     isFieldValid(field:string):boolean{
       return this.registrationForm.get(field).touched && this.registrationForm.get(field).invalid;

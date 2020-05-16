@@ -99,6 +99,7 @@
                     <span *ngIf="!showSpinner && !edit">Créer un Compte</span>
                     <span *ngIf="!showSpinner && edit">Confirmer</span>
                 </button>
+                <button  *ngIf="edit" class="m-2" mat-raised-button (click)="delete()">Supprimer Mon Compte</button>
             </div>
             <div *ngIf="showSpinner"><mat-spinner diameter="50" color="primary"></mat-spinner></div>
         </div>
