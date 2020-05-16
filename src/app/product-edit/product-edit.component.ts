@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../Models/Product';
 import { ProductsService } from '../Services/products/products.service';
 import { NotificationService } from '../Services/Notifications/notifications.service';
@@ -14,7 +14,7 @@ import { NotificationService } from '../Services/Notifications/notifications.ser
 export class ProductEditComponent implements OnInit {
  
   
-  constructor(private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute, private productsService: ProductsService, private notificationService: NotificationService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute, private productsService: ProductsService, private notificationService: NotificationService) { }
   
   ImagesNamesAndValues= new Map<string, string>();
   fileTypeIsNotCsv: boolean=false;
@@ -124,7 +124,19 @@ export class ProductEditComponent implements OnInit {
   public changeListener(fileInput: any){
       this.fileData = fileInput.target.files[0];
   }
-
+  delete(){
+    if(confirm("Supprimer ce produit?")){
+      this.productsService.delete(this.product.id).subscribe(
+        resp =>{
+          this.notificationService.warn("Produit supprimé")
+          this.router.navigate([''])
+        },
+        err => {
+          this.notificationService.warn("Une erreur s'est produite lors de la suppression du produit")
+        }
+      )
+    }
+  }
   onAddImage(){
      //this.showSpinner=true
       if(!this.fileData){this.notificationService.warn("Veuillez selectionner une image.")}
