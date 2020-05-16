@@ -22,7 +22,10 @@
                 <div *ngIf="fileData" class="m-2">
                     <p>Nom: {{fileName}}</p>
                     <p>Taille: {{fileSize}} octets</p>
-                    <p *ngIf="fileTypeIsNotCsv" style="color: firebrick;">Veuillez choisir un fichier CSV!</p>
+                         
+                        <div *ngIf="fileTypeIsNotCsv" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            Veuillez choisir un fichier CSV!
+                        </div>
                 </div>
             </div>
             
