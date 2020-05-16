@@ -8,6 +8,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { OrderLine } from '../Models/OrderLine';
 import { OrderLinesService } from '../Services/orderLines/order-lines.service';
+import { AuthenticationService } from '../Services/Authentication/authentication-service.service';
 
 @Component({
   selector: 'app-product-details',
@@ -29,7 +30,8 @@ export class ProductDetailsComponent implements OnInit {
               private orderLinesService: OrderLinesService,
               private router: Router,
               private formBuilder: FormBuilder,
-              private activatedRoute: ActivatedRoute){
+              private activatedRoute: ActivatedRoute,
+              private authenticationService: AuthenticationService){
                 this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   this.spinner.show();
   }
@@ -56,8 +58,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   hasImages(){
-    if(this.product.images) { return this.product.images.length>0 }
-    return false
+    return this.product.images.length>0;
   }
   
   buyForm = this.formBuilder.group({
@@ -109,4 +110,11 @@ export class ProductDetailsComponent implements OnInit {
   }
 
 
+  goToEdit(){
+    this.router.navigate(['products',this.product.id,'edit'])
+  }
+
+  isUserAdmin(){
+    return this.authenticationService.isCurrentUserAdmin()
+  }
 }

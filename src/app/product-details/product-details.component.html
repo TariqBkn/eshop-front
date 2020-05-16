@@ -26,16 +26,16 @@
             <div class="description" >
                <h2>{{product.description}}</h2>
             </div>
-            <div class="stars" >
+            <!--<div class="stars" >
                 <h4>{{product.note}} stars</h4>
-            </div>
+            </div>-->
             <div *ngIf="product.promotionRatio==0" class="unit_price">
                 {{product.unitPrice}} DH
             </div>
             <div *ngIf="product.promotionRatio>0 && product.promotionRatio<1 && product.unitPrice>0" class="">
                 <del>{{product.unitPrice}} DH</del><br>
-                {{product.unitPrice - product.unitPrice*product.promotionRatio}} DH<br>
-                {{product.promotionRatio*100}}% off
+                {{product.unitPrice - product.unitPrice*product.promotionRatio| number : '.2-2'}} DH<br>
+                {{product.promotionRatio*100 | number : '.2-2'}}% off
             </div>
             <div *ngIf="product.promotionRatio==1 || product.unitPrice==0" class="">
                 GRATUIT
@@ -53,6 +53,9 @@
                 </mat-form-field>
                 <div>
                     <button [disabled]="buyForm.invalid" mat-button >Ajouter au panier</button>
+                </div>
+                <div *ngIf="isUserAdmin()">
+                    <button (click)="goToEdit()" mat-button>Modifier Produit</button>
                 </div>
             </form>
 

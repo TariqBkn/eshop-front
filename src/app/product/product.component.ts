@@ -3,6 +3,7 @@ import { Product } from '../Models/Product';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { ProductsService } from '../Services/products/products.service';
+import { AuthenticationService } from '../Services/Authentication/authentication-service.service';
 
 @Component({
   selector: 'app-product',
@@ -14,7 +15,7 @@ export class ProductComponent implements OnInit {
   @Input() textOnly=false
   default_image: string="../../assets/images/notfound.png";
 
-  constructor(private router: Router, private productsService : ProductsService) { }
+  constructor(private router: Router, private productsService : ProductsService, private authenticationService:AuthenticationService) { }
 
   ngOnInit(): void {
     if(this.hasImages()) this.getProductImage()
@@ -25,9 +26,12 @@ export class ProductComponent implements OnInit {
     return this.product.images.length>0
   } 
   goToDetails(){
-     this.router.navigate(['/details',this.product.id])
+     this.router.navigate(['products',this.product.id,'details'])
   }
 
+  goToEdit(){
+    this.router.navigate(['products',this.product.id,'edit'])
+  }
   getProductImage() {
       this.productsService.getImage(this.product.images[0].name).subscribe(
         response => console.log(JSON.stringify(response)),
@@ -35,5 +39,9 @@ export class ProductComponent implements OnInit {
           this.image="data:image/jpg;base64,"+error.error.text;
         }
       )
+  }
+
+  isUserAdmin(){
+    return this.authenticationService.isCurrentUserAdmin();
   }
 }
