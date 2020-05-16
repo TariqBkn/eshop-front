@@ -12,12 +12,13 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { NewBulkProductsComponent } from './new-bulk-products/new-bulk-products.component';
 import { AdminGuardService } from './Services/guards/admin-guard.service';
 import { UsersListComponent } from './users-list/users-list.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
 
 
 const routes: Routes = [
   {path: "", component:HomePageComponent, canActivate:[AuthGuardService]},
   {path: "cart", component:CartComponent, canActivate:[AuthGuardService]},
-  {path: "details/:id", component:ProductDetailsComponent, canActivate:[AuthGuardService]},
+  {path: "products/:id/details", component:ProductDetailsComponent, canActivate:[AuthGuardService]},
   {path: "signup", component:CreateAccountComponent},
   {path: "login", component:LoginComponent},
   {path: "logout", component:LogoutModuleComponent, canActivate:[AuthGuardService]},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: "profile", component:MyProfileComponent, canActivate:[AuthGuardService]},
   {path: "products/add", component:NewBulkProductsComponent, canActivate:[AuthGuardService, AdminGuardService]},
   {path: "users", component: UsersListComponent, canActivate:[AuthGuardService, AdminGuardService]},
+  {path: "products/:id/edit", component: ProductEditComponent, canActivate:[AuthGuardService, AdminGuardService]},
  ];
 
 @NgModule({
