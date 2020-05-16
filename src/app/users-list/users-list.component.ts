@@ -46,7 +46,7 @@ export class UsersListComponent implements OnInit {
     this.isWaiting=false;
   }
   getSearchResults(key:string) {
-    this.usersService.getUserbyKeyWord(key,this.page).subscribe(
+    this.usersService.getUsersByKeyWord(key,this.page).subscribe(
       result=>{
         this.users=result['content'];
         this.pages=new Array(result['totalPages']);
