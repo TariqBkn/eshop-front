@@ -21,7 +21,6 @@ export class NewBulkProductsComponent implements OnInit {
   formData = new FormData();
 
   fileData = null;
-  fileUploadProgress: number = null;
   uploadedFilePath: string = null;
   preview = ""
   csvProductsForm = this.formbuilder.group({
@@ -55,7 +54,7 @@ export class NewBulkProductsComponent implements OnInit {
       this.formData.append( "file", this.fileData,this.fileData.name);
       this.productsService.uploadProductsCsvFile(this.formData).subscribe(
         resp=>{
-            if(resp=='COMPLETED') { this.notificationsService.warn("Fichiers traité avec succée") }
+            if(resp=='COMPLETED') { this.notificationsService.warn("Fichier traité avec succée") }
             if(resp=='FAILED') { this.notificationsService.warn("Le fichier contient des erreurs veuillez les vérifier et réssayer."); } 
             this.refreshPage();
             this.showSpinner=false
