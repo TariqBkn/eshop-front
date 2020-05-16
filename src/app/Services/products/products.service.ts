@@ -11,6 +11,7 @@ import { SimilarProduct } from 'src/app/Models/SimilarProduct';
 })
 export class ProductsService {
 
+
   token: string;
   userId: string;
    
@@ -60,5 +61,11 @@ export class ProductsService {
   }
   searchByKeywords(keywords: string[]) {
     return this.httpClient.post<String>(this.productsBaseUrl+"search", keywords);
+  }
+  getNumberOfProducts() {
+    return this.httpClient.get<String>(this.productsBaseUrl+"count");
+  }
+  delete(id: number) {
+    return this.httpClient.delete<String>(this.productsBaseUrl+id);
   }
 }
