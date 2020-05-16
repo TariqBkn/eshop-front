@@ -1,6 +1,6 @@
 <div class="d-flex align-content-around flex-wrap">
     <div *ngFor="let similarProduct of similarProducts" class="p-4">
          <app-product [product]="similarProduct.product"></app-product>
-        <span>{{similarProduct.similarityPercentage*100}}% similair</span>
+        <span>{{similarProduct.similarityPercentage*100 | number : '.2-2'}}% similair</span>
     </div>
  </div>
