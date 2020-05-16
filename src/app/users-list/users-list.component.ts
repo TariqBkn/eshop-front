@@ -11,7 +11,7 @@ import { AuthenticationService } from '../Services/Authentication/authentication
 })
 export class UsersListComponent implements OnInit {
 
-  users : Array<User> = new Array<User>();
+  users : Array<User> = [];
   page:number=0;
   pages : Array<number>;
   userId:string;
@@ -60,14 +60,12 @@ export class UsersListComponent implements OnInit {
     this.usersService.getUsers(this.page).subscribe(
       users=>{
           this.users=users['content'];
-          this.pages=new Array(users['totalPages']);
+          this.pages=new Array(users['totalPages']);          
       },
       err=>{
           this.notificationService.warn("Erreur inconnue.")
       });
   }
-
-  
     
 pageChanged(i:number,event:any){
     event.preventDefault();
@@ -75,15 +73,24 @@ pageChanged(i:number,event:any){
     this.getUsers();
 }
 switchLocked(userId){
- this.usersService.alterAccountUnlocked(userId).subscribe(r=>{
-    if(r.message=="OK"){
+ this.usersService.alterAccountUnlocked(userId).subscribe(
+    resp=>{
       this.notificationService.success("Effectué")
       var u = this.users.find(x=>x.id == userId);
       u.accountNonLocked=!u.accountNonLocked;
-    }else{
+    },
+    err =>{
+      console.log(JSON.stringify(err))
       this.notificationService.warn("Erreur inconnue");
     }
-  });
+  );
 }
 
+isUsersNotEmpty(){
+  if(this.users){
+    return this.users.length>0;
+  }else{
+    return false;
+  } 
+}
 }
