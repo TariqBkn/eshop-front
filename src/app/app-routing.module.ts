@@ -13,6 +13,7 @@ import { NewBulkProductsComponent } from './new-bulk-products/new-bulk-products.
 import { AdminGuardService } from './Services/guards/admin-guard.service';
 import { UsersListComponent } from './users-list/users-list.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { StatsComponent } from './stats/stats.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: "products/add", component:NewBulkProductsComponent, canActivate:[AuthGuardService, AdminGuardService]},
   {path: "users", component: UsersListComponent, canActivate:[AuthGuardService, AdminGuardService]},
   {path: "products/:id/edit", component: ProductEditComponent, canActivate:[AuthGuardService, AdminGuardService]},
+  {path: "stats", component: StatsComponent, canActivate:[AuthGuardService, AdminGuardService]},
  ];
 
 @NgModule({
