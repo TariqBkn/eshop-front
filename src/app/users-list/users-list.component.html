@@ -25,7 +25,7 @@
                 <th class="text-center">Compte verouillé</th>
             </tr>
         </thead>
-                <tr *ngFor="let user of users" [className]="user.accountNonLocked?'bg-danger text-white':''">
+                <tr *ngFor="let user of users" [className]="!user.accountNonLocked?'bg-danger text-white':''">
                     <td>
                             <strong>{{user.id}}</strong>
                     </td>
