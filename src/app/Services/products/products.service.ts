@@ -46,8 +46,16 @@ export class ProductsService {
   uploadProductsCsvFile(formData: FormData) {
     return this.httpClient.post<String>(this.productsBaseUrl+"bulk-add",formData);
   }
-
-  getImage(ImageName: string) {
-    return this.httpClient.get<String>(this.productsBaseUrl+"images/"+ImageName);
+  getImage(imageName: string) {
+    return this.httpClient.get<String>(this.productsBaseUrl+"images/"+imageName);
+  }
+  removeImage(productId: number, imageName: string) {
+    return this.httpClient.delete<String>(this.productsBaseUrl+productId+"/images/"+imageName);
+  }
+  uploadImage(productId:number, formData: FormData){
+    return this.httpClient.post<String>(this.productsBaseUrl+productId+"/images", formData);
+  }
+  updateProductData(product: any) {
+    return this.httpClient.patch<String>(this.productsBaseUrl+product.id, product);
   }
 }
