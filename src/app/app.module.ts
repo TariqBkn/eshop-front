@@ -31,7 +31,6 @@ import { MatStepperModule} from '@angular/material/stepper';
 import { SimilarProductsComponent } from './similar-products/similar-products.component';
 import { OrderLineComponent } from './order-line/order-line.component';
 import { MatListModule} from '@angular/material/list';
-import { CommentComponent } from './comment/comment.component';
 import { CommentsComponent } from './comments/comments.component';
 import { NewCommentComponent } from './new-comment/new-comment.component';
 import { MatBadgeModule } from '@angular/material/badge';
@@ -61,7 +60,6 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
     CheckoutComponent,
     SimilarProductsComponent,
     OrderLineComponent,
-    CommentComponent,
     CommentsComponent,
     NewCommentComponent,
     MyProfileComponent,
