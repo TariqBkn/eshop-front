@@ -43,6 +43,7 @@ import { NewBulkProductsComponent } from './new-bulk-products/new-bulk-products.
 import { MatTableModule } from '@angular/material/table';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { UsersListComponent } from './users-list/users-list.component';
+import { ProductEditComponent } from './product-edit/product-edit.component';
  
 
  @NgModule({
@@ -68,6 +69,7 @@ import { UsersListComponent } from './users-list/users-list.component';
     CheckoutsHistoryComponent,
     NewBulkProductsComponent,
     UsersListComponent,
+    ProductEditComponent,
 
   ],
   imports: [
