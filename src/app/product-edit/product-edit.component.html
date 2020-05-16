@@ -1,0 +1,97 @@
+<div class="container">
+<!-- Gallery -->
+<div class="gallery">
+  <div class="product-images d-flex justify-content-around m-2" style="width: 70%;">
+    <div style="margin-left: 38%;" *ngFor="let image of product.images" class="text-center" class="images  d-flex justify-content-center">
+      <div class="d-flex justify-content-around flex-column">
+        <img *ngIf="hasImages()" src="{{getImage(image.name)}}" alt="" width="220px" height="150px" class="img-responsive" />
+        <button (click)="removeImage(image.name)" *ngIf="hasImages()" mat-button>
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.151 17.943l-4.143-4.102-4.117 4.159-1.833-1.833 4.104-4.157-4.162-4.119 1.833-1.833 4.155 4.102 4.106-4.16 1.849 1.849-4.1 4.141 4.157 4.104-1.849 1.849z"/>
+          </svg>
+          Supprimer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Add Image -->
+<div class="container" *ngIf="!numberOfImagesIsMaxedOut()">
+  <mat-toolbar color="primary">
+    <h1>Ajouter Une Image</h1>
+  </mat-toolbar>
+  <form [formGroup]="newImageForm" (ngSubmit)="onAddImage()" >
+      <input class="p-2" type="file" (change)="changeListener($event)" name="image" />
+      <div class="form-field">
+        <button mat-button color="primary" [disabled]="newImageForm.invalid" >
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 13h-5v5h-2v-5h-5v-2h5v-5h2v5h5v2z"/>
+          </svg>
+          Ajouter l'image
+        </button>
+      </div>
+  </form> <br>
+</div>
+<!-- Info -->
+<div class="product-edit container">
+  
+  <mat-toolbar color="primary">
+    <h1>Informations sur le Produit</h1>
+  </mat-toolbar>
+    <div class="col-md-10 offset-md-1 col-sm-12 align-self-center p-4">
+      <form [formGroup]="productForm" (ngSubmit)="onClickSubmit()">
+
+            <div class="form-field">
+               <mat-form-field appearance="outline" class="full">
+                <mat-label>Title</mat-label>
+                <input type="text" matInput formControlName="title">
+               </mat-form-field>
+            </div>
+
+            <div class="form-field">
+               <mat-form-field appearance="outline" class="full"> 
+                <mat-label>Prix Unitaire</mat-label>
+                <input type="number" matInput formControlName="unitPrice">
+               </mat-form-field>
+            </div>
+
+            <div class="form-field">
+              <mat-form-field appearance="outline" class="full">
+                <mat-label>Description</mat-label>              
+                <input type="text" matInput formControlName="description">
+              </mat-form-field>
+            </div>
+
+            <div class="form-field">
+              <mat-form-field appearance="outline" class="full">
+                <mat-label>Quantité en Stock</mat-label>              
+                <input type="number" min="0" matInput formControlName="quantityInStock">
+              </mat-form-field>
+            </div>
+
+            <div class="form-field">
+              <mat-form-field appearance="outline" class="full">
+                <mat-label>Taux De Promotion</mat-label>              
+                <input type="number" step="0.01" min="0" max="1" matInput formControlName="promotionRatio">
+              </mat-form-field>
+            </div>
+
+            <div class="form-field">
+              <mat-form-field appearance="outline" class="full">
+                <mat-label>Fournisseur</mat-label>              
+                <input type="text" matInput formControlName="providerName">
+              </mat-form-field>
+            </div>
+
+            <div class="form-field">
+              <mat-form-field appearance="outline" class="full">
+                <mat-label>Couleur</mat-label>              
+                <input type="text" matInput formControlName="color">
+              </mat-form-field>
+            </div>
+
+            <div class="form-field">
+                 <button [disabled]="productForm.invalid" mat-raised-button color="primary">Appliquer</button>
+            </div>
+      </form>
+    </div>
+</div>
+</div>
