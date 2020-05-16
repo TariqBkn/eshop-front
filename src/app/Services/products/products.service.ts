@@ -58,4 +58,7 @@ export class ProductsService {
   updateProductData(product: any) {
     return this.httpClient.patch<String>(this.productsBaseUrl+product.id, product);
   }
+  searchByKeywords(keywords: string[]) {
+    return this.httpClient.post<String>(this.productsBaseUrl+"search", keywords);
+  }
 }
