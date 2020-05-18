@@ -17,7 +17,6 @@ import { AuthenticationService } from '../Services/Authentication/authentication
 })
 
 export class ProductDetailsComponent implements OnInit {
-  products_images_base_url=environment.static_productImages_url;
   product : Product = new Product();
   active_image:string
   previous_image:string

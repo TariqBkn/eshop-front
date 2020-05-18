@@ -20,7 +20,6 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     if(this.hasImages()) this.getProductImage()
   }
-  products_images_base_url=environment.static_productImages_url;
   image=""
   hasImages():boolean{
     return this.product.images.length>0
