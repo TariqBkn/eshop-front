@@ -79,13 +79,12 @@ isUserLoggedIn() {
         return true;
       }
     }
-    console.log(token+user)
     return false;
 }
 
   isCurrentUserAdmin(){
     if(sessionStorage.getItem('role')==null){
-       console.log('role null'); return false;
+      return false;
     }
     return sessionStorage.getItem('role')=="ADMIN" && this.isUserLoggedIn();
   }
