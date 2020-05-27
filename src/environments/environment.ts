@@ -1,11 +1,17 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+class URLBuilder{
+  public get(){
+    return window.location.protocol + '//' + window.location.host + '/backend';
+  };
+}
 
 export const environment = {
-  production: false,
-  main_api_url: "http://localhost:5555",
+  production: true,
+  main_api_url: new URLBuilder().get()
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
