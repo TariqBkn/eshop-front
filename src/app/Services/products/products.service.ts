@@ -48,7 +48,7 @@ export class ProductsService {
     return this.httpClient.post<String>(this.productsBaseUrl+"bulk-add",formData);
   }
   getImage(imageName: string) {
-    return this.httpClient.get<String>(this.productsBaseUrl+"images/"+imageName);
+    return this.httpClient.get<String>(this.productsBaseUrl+"images?imageName="+imageName);
   }
   removeImage(productId: number, imageName: string) {
     return this.httpClient.delete<String>(this.productsBaseUrl+productId+"/images/"+imageName);
