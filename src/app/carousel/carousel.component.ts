@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./carousel.component.css']
 })
 export class CarouselComponent implements OnInit {
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/2000/600`);
+  images = [ "../../assets/images/carousel1.png", "../../assets/images/carousel2.jpg", "../../assets/images/carousel3.jpg"]; 
   constructor() { }
 
   ngOnInit(): void {
