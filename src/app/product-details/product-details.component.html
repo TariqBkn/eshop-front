@@ -7,14 +7,14 @@
                 <div class="images m-2 d-flex justify-content-around flex-column" style=" width: 25%;" >
                      <div *ngFor="let image of product.images">
                         <div (click)="setActiveImage(image.name)" (mouseenter) ="setActiveImage(image.name)"  (mouseleave) ="setActiveImage(previous_image)">
-                             <img *ngIf="hasImages()" src="{{getImage(image.name)}}" alt="" width="90px" height="60px"/>
-                             <img *ngIf="!hasImages()" src="../../assets/images/notfound.png" alt="" width="90px" height="60px"/>
+                             <img *ngIf="hasImages()" src="{{getImage(image.name)}}" alt="" width="90px" height="60px" class="small-img"/>
+                             <img *ngIf="!hasImages()" src="../../assets/images/notfound.png" alt="" width="90px" height="60px" class="small-img"/>
                         </div>
                     </div>
                   </div>
                 <div class="active-image w-100 col-sm-12 ">
-                    <img *ngIf="hasImages()" src="{{getImage(active_image)}}" alt="" width="auto" height="350px"/>
-                    <img *ngIf="!hasImages()" src="../../assets/images/notfound.png" alt="" width="auto" height="350px"/>
+                    <img *ngIf="hasImages()" src="{{getImage(active_image)}}" alt="" width="auto" height="350px" class="active-img"/>
+                    <img *ngIf="!hasImages()" src="../../assets/images/notfound.png" alt="" width="auto" height="350px" class="active-img"/>
                 </div>
             </div>
         </div>
