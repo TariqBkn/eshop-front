@@ -51,7 +51,7 @@ export class ProductsService {
     return this.httpClient.get<String>(this.productsBaseUrl+"images?imageName="+imageName);
   }
   removeImage(productId: number, imageName: string) {
-    return this.httpClient.delete<String>(this.productsBaseUrl+productId+"/images/"+imageName);
+    return this.httpClient.delete<String>(this.productsBaseUrl+productId+"/images?imageName="+imageName);
   }
   uploadImage(productId:number, formData: FormData){
     return this.httpClient.post<String>(this.productsBaseUrl+productId+"/images", formData);

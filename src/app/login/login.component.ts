@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         this.showLoader=false;
         if(error.message=="Http failure response for http://localhost:8080/login: 0 Unknown Error"){
           this.notificationService.warn("Aucune Réponse de la part du serveur.");
-        }else if(error.message=="Http failure response for http://localhost:8080/login: 401 OK"){
+        }else if(error.status==401){
           this.notificationService.warn("Email ou mot-de-passe incorrectes.");
         }else{
             this.notificationService.warn("Erreur inconnue.");
